@@ -48,7 +48,7 @@ $(document).ready(function () {
         // Check for 504 Gateway Timeout error
         if (error.status === 504) {
           $("#modalErrorMessage").html(
-            "Request timed out due to Vercel serverless function limitations. <em>Try TEXT mode or a URL with less content.</em>"
+            "Request timed out due to Vercel serverless function limitations. <em>This is for demo purposes only.</em>"
           );
           $("#errorModal").modal("show");
         } else {

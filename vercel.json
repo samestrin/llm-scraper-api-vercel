@@ -1,27 +1,22 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "app.py",
-      "use": "@vercel/python"
-    },
-    {
-      "src": "demo/assets/**",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "demo/index.html",
-      "use": "@vercel/static"
+  "functions": {
+    "api/app.py": {
+      "maxDuration": 60
     }
-  ],
+  },
   "routes": [
     {
       "src": "/api/scrape",
-      "dest": "/app.py"
+      "dest": "/api/app.py"
     },
     {
       "src": "/assets/(.*)",
       "dest": "/demo/assets/$1"
+    },
+    {
+      "src": "/assets/(.*)/(.*)",
+      "dest": "/demo/assets/$1/$2"
     },
     {
       "src": "/",
