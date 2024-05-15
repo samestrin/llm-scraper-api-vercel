@@ -1,13 +1,31 @@
 {
-  "functions": {
-    "api/scrape/scrape.py": {
-      "runtime": "python3.9"
+  "version": 2,
+  "builds": [
+    {
+      "src": "app.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "demo/assets/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "demo/index.html",
+      "use": "@vercel/static"
     }
-  },
+  ],
   "routes": [
     {
       "src": "/api/scrape",
-      "dest": "/api/scrape/app.py"
+      "dest": "/app.py"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/demo/assets/$1"
+    },
+    {
+      "src": "/",
+      "dest": "/demo/index.html"
     }
   ]
 }

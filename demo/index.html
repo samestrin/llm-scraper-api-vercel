@@ -3,38 +3,99 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web Scraping Demo</title>
+    <title>Prompt Based Scraping Demo</title>
     <link
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body>
     <div class="container">
-      <h1 class="mt-5">Web Scraping Demo</h1>
+      <h1 class="mt-5">Prompt Based Scraping Demo</h1>
       <form id="scrape-form">
         <div class="form-group">
           <label for="url">URL</label>
-          <input type="text" class="form-control" id="url" required />
+          <input
+            type="text"
+            class="form-control"
+            id="url"
+            value="https://abcnews.go.com/Site/page/rss-feeds-3520115"
+            required
+          />
         </div>
         <div class="form-group">
           <label for="api-key">OpenAI API Key</label>
-          <input type="text" class="form-control" id="api-key" required />
+          <input
+            type="text"
+            class="form-control"
+            id="api-key"
+            value=""
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="mode">Mode</label>
+          <select class="form-control" id="mode" name="mode">
+            <option value="TEXT">TEXT</option>
+            <option value="HTML">HTML</option>
+          </select>
         </div>
         <div class="form-group">
           <label for="prompt">Scraping Prompt</label>
-          <textarea
-            class="form-control"
-            id="prompt"
-            rows="3"
-            required
-          ></textarea>
+          <textarea class="form-control" id="prompt" rows="3" required>
+Extract all RSS titles</textarea
+          >
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" id="submit-button">
+          Submit
+        </button>
       </form>
+      <div id="result" class="mt-4"></div>
     </div>
+
+    <!-- Modal HTML -->
+    <div
+      class="modal fade"
+      id="errorModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="errorModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="errorModalLabel">Error</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p id="modalErrorMessage">An error occurred.</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Include Bootstrap JS if not already included -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="/assets/javascript/scrape.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="assets/js/scrape.js"></script>
   </body>
 </html>
