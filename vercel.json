@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "api/scrape/scrape.py": {
+      "runtime": "python3.9"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/scrape",
+      "dest": "/api/scrape/app.py"
+    }
+  ]
+}
