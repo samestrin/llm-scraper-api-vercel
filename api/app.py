@@ -7,6 +7,12 @@ from bs4 import BeautifulSoup
 import re
 from json_repair import repair_json
 
+from gptcache import cache
+from gptcache.adapter import openai
+
+cache.init()
+cache.set_openai_key()
+
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})  # Enable CORS for all routes
 
